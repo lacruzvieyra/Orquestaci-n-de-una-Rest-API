@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: horario
+  labels:
+    app: horario-front
+spec:
+  selector:
+    matchLabels:
+      app: horario-front
+      tier: horario
+  replicas: 7
+  template:
+    metadata:
+      labels:
+        app: horario-front
+        tier: horario
+    spec:
+      containers:
+        - name: horario
+          image: 18240127/apihorario-php-apache-environment
+          ports:
+            - containerPort: 80

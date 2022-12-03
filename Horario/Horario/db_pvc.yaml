@@ -1,0 +1,11 @@
+apiVersion: ve1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysqlpvclaim
+spec:
+  storageClassName: dbpvc
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 4Gi

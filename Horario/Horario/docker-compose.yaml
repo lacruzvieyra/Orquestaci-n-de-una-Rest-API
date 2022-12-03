@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+    php-apache-environment:
+        container_name: php-horario
+        build:
+            context: ./src
+            dockerfile: DockerFile
+        depends_on:
+            - db
+        volumes:
+            - ./src:/var/www/html/
+        ports:
+            - 80:80
+    db:
+      container_name: api_db_reticule
+      image: mysql
+      restart: always
+      environment:
+          MYSQL_ROOT_PASSWORD: " " 
+          MYSQL_DATABASE: "horario"
+          MYSQL_USER: "root"
+          MYSQL_PASSWORD: " "
+      ports:
+        - "9906:3306"
